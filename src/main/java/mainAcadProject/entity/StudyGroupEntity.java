@@ -12,24 +12,16 @@ public class StudyGroupEntity implements Serializable {
     private int id;
     private String  name;
     private СourseEntity course;
-    private LocalDate plan_startDate,
-                        plan_endDate,
-                        fact_startDate,
-                        fact_endDate;
+    private LocalDate plan_startDate;
+    private LocalDate plan_endDate;
+    private LocalDate fact_startDate;
+    private LocalDate fact_endDate;
+    private double total_hours;
+    private double spent_hourse;
     private List<InstructorEntity> instructor;
+    private List<RegistersEntity> registers;
 
     public StudyGroupEntity() {
-    }
-
-    public StudyGroupEntity(int id, String name, СourseEntity course, LocalDate plan_startDate, LocalDate plan_endDate,
-                            LocalDate fact_startDate, LocalDate fact_endDate) {
-        this.id = id;
-        this.name = name;
-        this.course = course;
-        this.plan_startDate = plan_startDate;
-        this.plan_endDate = plan_endDate;
-        this.fact_startDate = fact_startDate;
-        this.fact_endDate = fact_endDate;
     }
 
     public int getId() {
@@ -96,9 +88,34 @@ public class StudyGroupEntity implements Serializable {
         this.instructor = instructor;
     }
 
+    public double getTotal_hours() {
+        return total_hours;
+    }
+
+    public void setTotal_hours(double total_hours) {
+        this.total_hours = total_hours;
+    }
+
+    public double getSpent_hourse() {
+        return spent_hourse;
+    }
+
+    public void setSpent_hourse(double spent_hourse) {
+        this.spent_hourse = spent_hourse;
+    }
+
+    public List<RegistersEntity> getRegisters() {
+        return registers;
+    }
+
+    public void setRegisters(List<RegistersEntity> registers) {
+        this.registers = registers;
+    }
+
     @Override
     public String toString(){
-        return "Study group: id: "+id+"; name: "+name+"; course: "+course.getName()+"; plan start: "+plan_startDate+
-                "; plan end: "+plan_endDate+"; fact start: "+fact_startDate+"; fact end: "+fact_endDate;
+        return "Study group: id: "+id+"; name: "+name+"; course: "+course.getName()+"; total hourse: "+total_hours+
+                "; spent hours: "+spent_hourse+"; plan start: "+plan_startDate+"; plan end: "+plan_endDate+
+                "; fact start: "+fact_startDate+"; fact end: "+fact_endDate;
     }
 }

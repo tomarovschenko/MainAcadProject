@@ -19,16 +19,7 @@ public class ContractEntity implements Serializable {
     public ContractEntity() {
     }
 
-    public ContractEntity(int id, String numb, LocalDate startDate, LocalDate endDate, double amount, StudentEntity student) {
-        this.id = id;
-        this.numb = numb;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.amount = amount;
-        this.student = student;
-    }
-
-    public int getId() {
+   public int getId() {
         return id;
     }
 

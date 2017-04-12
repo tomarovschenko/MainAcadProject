@@ -147,3 +147,6 @@ ADD CONSTRAINT `ContractPayment`
   REFERENCES `сontract` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+
+

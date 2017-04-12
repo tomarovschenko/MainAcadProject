@@ -14,23 +14,12 @@ public class StudentEntity implements Serializable{
     private String phone;
     private String email;
     private String address;
+    private String passport;
     private ManagerEntity manager;
     private List <ContractEntity> contracts;
     private List<StudyGroupEntity> groups;
 
     public StudentEntity() {
-    }
-
-    public StudentEntity(int id, String surname, String name, String patronymic, String phone, String email, String address,
-                         ManagerEntity manager) {
-        this.id = id;
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.manager = manager;
     }
 
     public int getId() {
@@ -113,9 +102,34 @@ public class StudentEntity implements Serializable{
         this.groups = group;
     }
 
+    public List<ContractEntity> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(List<ContractEntity> contracts) {
+        this.contracts = contracts;
+    }
+
+    public List<StudyGroupEntity> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<StudyGroupEntity> groups) {
+        this.groups = groups;
+    }
+
+    public String getPassport() {
+
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
     @Override
     public String toString(){
         return "Student: id: "+id+"; surname: "+surname+"; name: "+name+"; patronymic: "+patronymic+"; tel: "+phone+
-                "; email: "+email+"; address: "+address+"; manager: "+manager.getName();
+                "; passport: "+passport+"; email: "+email+"; address: "+address+"; manager: "+manager.getName();
     }
 }

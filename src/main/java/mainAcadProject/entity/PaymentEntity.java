@@ -19,18 +19,6 @@ public class PaymentEntity implements Serializable {
     public PaymentEntity() {
     }
 
-    public PaymentEntity(int id, String amount_plan, LocalDate date_plan, String amount_fact, LocalDate date_fact,
-                         String invoice_num, LocalDate invoice_date, ContractEntity contract) {
-        this.id = id;
-        this.amount_plan = amount_plan;
-        this.date_plan = date_plan;
-        this.amount_fact = amount_fact;
-        this.date_fact = date_fact;
-        this.invoice_num = invoice_num;
-        this.invoice_date = invoice_date;
-        this.contract = contract;
-    }
-
     public int getId() {
         return id;
     }

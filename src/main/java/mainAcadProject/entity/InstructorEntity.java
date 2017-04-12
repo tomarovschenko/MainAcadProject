@@ -7,11 +7,12 @@ import java.util.List;
  * Created by ) on 23.03.2017.
  */
 public class InstructorEntity implements Serializable {
-    private int instructor_id;
+    private int id;
     private String  surname;
     private String  name;
     private String  patronymic;
     private String  phone;
+    private String passport;
     private String  email;
     private String  working;
     List <LaborContractEntity> contracts;
@@ -20,23 +21,12 @@ public class InstructorEntity implements Serializable {
     public InstructorEntity() {
     }
 
-    public InstructorEntity(int instructor_id, String surname, String name,
-                            String patronymic, String phone, String email, String working){
-        this.instructor_id=instructor_id;
-        this.surname=surname;
-        this.name=name;
-        this.patronymic=patronymic;
-        this.phone=phone;
-        this.email=email;
-        this.working=working;
-    }
-
     public int getInstructor_id() {
-        return instructor_id;
+        return id;
     }
 
-    public void setInstructor_id(int instructor_id) {
-        this.instructor_id = instructor_id;
+    public void setInstructor_id(int id) {
+        this.id = id;
     }
 
     public String getSurname() {
@@ -103,10 +93,18 @@ public class InstructorEntity implements Serializable {
         this.groups = groups;
     }
 
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
     @Override
     public String toString(){
-        return "Instructor: [id: "+instructor_id+";/t"+"surname: "+surname+";/t"+"name: "+name+";/t"+"patronymic: "+
-                patronymic+";/t"+"phone: "+phone+";/t"+"email: "+email+";/t"+"working: "+working+";]";
+        return "Instructor: id: "+id+"; surname: "+surname+"; name: "+name+"; patronymic: "+
+                patronymic+"; phone: "+phone+"; passport: "+passport+"; email: "+email+"; working: "+working;
     }
 
 }
