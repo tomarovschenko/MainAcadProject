@@ -6,9 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -80,19 +80,21 @@ public class CourseController implements Initializable {
         // table_courses.setDisable(true);
         tbl_col_name.setCellFactory(TextFieldTableCell.forTableColumn());
         tbl_col_name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        tbl_col_hours.setCellValueFactory(cellData -> cellData.getValue().total_hoursProperty().asObject());
-        tbl_col_hours.setCellFactory(col ->
-                new TableCell<Course, Double>() {
-                    @Override
-                    public void updateItem(Double hours, boolean empty) {
-                        super.updateItem(hours, empty);
-                        if (empty) {
-                            setText(null);
-                        } else {
-                            setText(String.format("%.2f", hours.doubleValue()));
+        tbl_col_hours.setCellFactory(TextFieldTableCell.forTableColumn(
+                new StringConverter<Double>() {
+                    @Override public String toString(Double object) {
+                        return String.format("%.2f", object);
+                    }
+
+                    @Override public Double fromString(String string) {
+                        try {
+                            return Double.valueOf(string);
+                        } catch (NumberFormatException ex) {
+                            return 0.0;
                         }
                     }
-                });
+                }));
+        tbl_col_hours.setCellValueFactory(cellData -> cellData.getValue().total_hoursProperty().asObject());
 
         table_courses.setItems(courses);
         //редактирование ячеек и сохранение информации после нажатия клавиши Enter
