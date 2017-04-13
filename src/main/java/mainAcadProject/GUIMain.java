@@ -1,4 +1,4 @@
-package sample;
+package mainAcadProject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,18 +6,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+/**
+ * Created by ) on 13.04.2017.
+ */
+public class GUIMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("mainAcadProject/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Учебные курсы");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
 
-    public static void main(String[] args) {
+    public static void runUI(String [] args) {
         launch(args);
     }
 }

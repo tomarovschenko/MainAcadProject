@@ -11,7 +11,7 @@ import java.util.List;
 public class StudyGroupEntity implements Serializable {
     private int id;
     private String  name;
-    private СourseEntity course;
+    private CourseEntity course;
     private LocalDate plan_startDate;
     private LocalDate plan_endDate;
     private LocalDate fact_startDate;
@@ -40,11 +40,11 @@ public class StudyGroupEntity implements Serializable {
         this.name = name;
     }
 
-    public СourseEntity getCourse() {
+    public CourseEntity getCourse() {
         return course;
     }
 
-    public void setCourse(СourseEntity course) {
+    public void setCourse(CourseEntity course) {
         this.course = course;
     }
 

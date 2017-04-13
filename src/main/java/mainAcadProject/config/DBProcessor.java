@@ -12,7 +12,7 @@ import java.util.Properties;
 /**
  * Created by ) on 30.03.2017.
  */
-public class DBProcessor {
+public class DBProcessor{
 
     private static Connection connection;
     private static String url;

@@ -11,6 +11,8 @@ CREATE TABLE `сontract`(
 CREATE TABLE `course`(
   `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `course_name` varchar(45) NOT NULL,
+  `total_hours` DOUBLE NOT NULL,
+  `remote` boolean NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `course_name_UNIQUE` (`course_name`));
@@ -92,7 +94,7 @@ CREATE TABLE `instructor_group` (
   CONSTRAINT `Instr` FOREIGN KEY (`instructor_id`) REFERENCES `instructor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `StadyGroup` FOREIGN KEY (`group_id`) REFERENCES `study_group` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION);
 
-CREATE TABLE `main_acad`.`student_group` (
+CREATE TABLE `student_group` (
   `student_id` int(10) unsigned NOT NULL,
   `group_id` int(10) unsigned NOT NULL,
   `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,

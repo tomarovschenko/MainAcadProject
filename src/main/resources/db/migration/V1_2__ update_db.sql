@@ -8,9 +8,6 @@ ADD COLUMN `passport` varchar(45) NULL AFTER `phone`;
 ALTER TABLE `instructor`
 ADD COLUMN `passport` varchar(45) NULL AFTER `phone`;
 
-ALTER TABLE `course`
-ADD COLUMN `total_hourse` DOUBLE NOT NULL;
-
 ALTER TABLE `сontract`
 ADD COLUMN `date_end` DATE NULL;
 
