@@ -5,15 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3887aa19-61c8-4948-bc81-a5a47d29c4ed" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/GUIMain.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/controller/CourseController$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/controller/CourseController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/controller/EditingCell.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/dao/СourseDao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/entity/CourseEntity.class" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/mainAcadProject/GUIMain.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/mainAcadProject/controller/CourseController.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/mainAcadProject/dao/СourseDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/mainAcadProject/entity/CourseEntity.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/mainAcadProject/sample.fxml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/mainAcadProject/entity/СourseEntity.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mainAcadProject/entity/СourseEntity.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mainAcadProject/Main.class" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mainAcadProject/entity/StudyGroupEntity.class" afterPath="$PROJECT_DIR$/target/classes/mainAcadProject/entity/StudyGroupEntity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sample/Main.class" afterPath="$PROJECT_DIR$/target/classes/sample/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mainAcadProject/Main.java" afterPath="$PROJECT_DIR$/src/main/java/mainAcadProject/Main.java" />
@@ -24,7 +35,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_2__ update_db.sql" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1_2__ update_db.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/db/migration/V1_1__create_db.sql" afterPath="$PROJECT_DIR$/target/classes/db/migration/V1_1__create_db.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/db/migration/V1_2__ update_db.sql" afterPath="$PROJECT_DIR$/target/classes/db/migration/V1_2__ update_db.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mainAcadProject/entity/СourseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/mainAcadProject/entity/CourseEntity.java" />
     </list>
     <ignored path="MainAcadProject.iws" />
     <ignored path=".idea/workspace.xml" />
