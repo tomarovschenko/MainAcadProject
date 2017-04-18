@@ -10,9 +10,13 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import mainAcadProject.entity.CourseEntity;
+import mainAcadProject.dao.CourseDao;
+
 
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -22,7 +26,7 @@ public class CourseController implements Initializable{
 
         private Label label;
 
-        ObservableList<CourseEntity> courses = FXCollections.observableArrayList();
+        ObservableList<CourseEntity> courses;
         @FXML
         private TableView<CourseEntity> table_courses = new TableView<CourseEntity>();
         @FXML
@@ -41,140 +45,138 @@ public class CourseController implements Initializable{
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
-
-
-
-
-            // table_courses.setDisable(true);
-            tbl_col_name.setCellFactory(TextFieldTableCell.forTableColumn());
-            tbl_col_name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-            //    tbl_col_hours.setCellFactory(TextFieldTableCell.forTableColumn());
-            tbl_col_hours.setCellFactory(TextFieldTableCell.forTableColumn(
-                    new StringConverter<Double>() {
-                        @Override public String toString(Double object) {
-                            return String.format("%.2f", object);
-                        }
-
-                        @Override public Double fromString(String string) {
-                            try {
-                                return Double.valueOf(string);
-                            } catch (NumberFormatException ex) {
-                                return 0.0;
+            try {
+                courses=FXCollections.observableArrayList(CourseDao.unload());
+                tbl_col_name.setCellFactory(TextFieldTableCell.forTableColumn());
+                tbl_col_name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+                tbl_col_hours.setCellFactory(TextFieldTableCell.forTableColumn(
+// TODO дописать свой конвертер DoubleUtil
+                        new StringConverter<Double>() {
+                            @Override public String toString(Double object) {
+                                return String.format("%.2f", object);
                             }
-                        }}));
-            tbl_col_hours.setCellValueFactory(cellData -> cellData.getValue().total_hoursProperty().asObject());
-            // tbl_col_hours.setCellValueFactory(cellData -> cellData.getValue().total_hoursProperty().asString());
- /*       tbl_col_hours.setCellFactory(col ->
-                new TableCell<Course, Double>() {
-                    @Override
-                    public void updateItem(Double hours, boolean empty) {
-                        super.updateItem(hours, empty);
-                        if (empty) {
-                            setText(null);
-                        } else {
-                            setText(String.format("%.2f", hours.doubleValue()));
-                        }
-                    }
-                });
-  */
+                            @Override public Double fromString(String string) {
+                                try {
+                                    return Double.valueOf(string);
+                                } catch (NumberFormatException ex) {
+                                    return 0.0;
+                                }
+                            }}));
+                tbl_col_hours.setCellValueFactory(cellData -> cellData.getValue().total_hoursProperty().asObject());
+                table_courses.setItems(courses);
+                editLine();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
-            table_courses.setItems(courses);
-            //редактирование ячеек и сохранение информации после нажатия клавиши Enter
+        public void editLine (){
             table_courses.setEditable(true);
-            Callback<TableColumn<CourseEntity, String>,
-                    TableCell<CourseEntity, String>> cellFactory
-                    = (TableColumn<CourseEntity, String> p) -> new EditingCell();
-
+            tbl_col_name.setOnEditCommit((TableColumn.CellEditEvent<CourseEntity, String> event) -> {
+                TablePosition<CourseEntity, String> pos = event.getTablePosition();
+                CourseEntity cou = event.getTableView().getItems().get(pos.getRow());
+                cou.setName(event.getNewValue());
+            });
+            tbl_col_hours.setOnEditCommit((TableColumn.CellEditEvent<CourseEntity,Double> event) -> {
+                TablePosition<CourseEntity, Double> pos = event.getTablePosition();
+                CourseEntity cou = event.getTableView().getItems().get(pos.getRow());
+                cou.setTotal_hours(event.getNewValue());
+            });
         }
 
         @FXML
         public void add(){
-           CourseEntity next=new CourseEntity();
-
+            CourseEntity next=new CourseEntity();
+            next.setId(-1);
+            next.setName(" ");
+            next.setTotal_hours(0.0);
             courses.add(next);
-
         }
+
         @FXML
-        public ObservableList saveСhanges(){
-            System.out.println("SAVE");
+        public void saveСhanges() throws SQLException {
             courses=table_courses.getItems();
             for (CourseEntity cou: courses) {
-                System.out.println(cou.toString());
+                CourseDao.update(cou);
             }
-            return courses;
-
-
+            courses=FXCollections.observableArrayList(CourseDao.unload());
+            table_courses.setItems(courses);
         }
+
         @FXML
-        public void delete(){
+        public void delete() throws SQLException {
             int selectedIndex = table_courses.getSelectionModel().getSelectedIndex();
             table_courses.getItems().get(selectedIndex).setRemote(true);
+            CourseDao.update(table_courses.getItems().get(selectedIndex));
+            courses=FXCollections.observableArrayList(CourseDao.unload());
+            table_courses.setItems(courses);
+        }
+// TODO сделать что-то с кнопкой отмена
+}
+
+class EditingCell extends TableCell<CourseEntity, String> {
+
+    private TextField textField;
+
+    public EditingCell() {
+    }
+
+    @Override
+    public void startEdit() {
+        if (!isEmpty()) {
+            super.startEdit();
+            createTextField();
+            setText(null);
+            setGraphic(textField);
+            textField.selectAll();
         }
     }
 
-    class EditingCell extends TableCell<CourseEntity, String> {
+    @Override
+    public void cancelEdit() {
+        super.cancelEdit();
+        setText((String) getItem());
+        setGraphic(null);
+    }
 
-        private TextField textField;
+    @Override
+    public void updateItem(String item, boolean empty) {
+        super.updateItem(item, empty);
 
-        public EditingCell() {
-        }
-
-        @Override
-        public void startEdit() {
-            if (!isEmpty()) {
-                super.startEdit();
-                createTextField();
+        if (empty) {
+            setText(null);
+            setGraphic(null);
+        } else {
+            if (isEditing()) {
+                if (textField != null) {
+                    textField.setText(getString());
+                }
                 setText(null);
                 setGraphic(textField);
-                textField.selectAll();
-            }
-        }
-
-        @Override
-        public void cancelEdit() {
-            super.cancelEdit();
-
-            setText((String) getItem());
-            setGraphic(null);
-        }
-
-        @Override
-        public void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-
-            if (empty) {
-                setText(null);
-                setGraphic(null);
             } else {
-                if (isEditing()) {
-                    if (textField != null) {
-                        textField.setText(getString());
-                    }
-                    setText(null);
-                    setGraphic(textField);
-                } else {
-                    setText(getString());
-                    setGraphic(null);
-                }
+                setText(getString());
+                setGraphic(null);
             }
-        }
-
-        private void createTextField() {
-            textField = new TextField(getString());
-            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
-            textField.focusedProperty().addListener(
-                    (ObservableValue<? extends Boolean> arg0,
-                     Boolean arg1, Boolean arg2) -> {
-                        if (!arg2) {
-                            commitEdit(textField.getText());
-                        }
-                    });
-        }
-
-        private String getString() {
-            return getItem() == null ? "" : getItem().toString();
         }
     }
+
+    private void createTextField() {
+        textField = new TextField(getString());
+        textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
+        textField.focusedProperty().addListener(
+                (ObservableValue<? extends Boolean> arg0,
+                 Boolean arg1, Boolean arg2) -> {
+                    if (!arg2) {
+                        commitEdit(textField.getText());
+                    }
+                }
+        );
+    }
+
+    private String getString() {
+        return getItem() == null ? "" : getItem().toString();
+    }
+}
 
 
 

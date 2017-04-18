@@ -1,8 +1,6 @@
 package mainAcadProject.entity;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import java.io.Serializable;
 
@@ -10,13 +8,14 @@ import java.io.Serializable;
  * Created by ) on 23.03.2017.
  */
 public class CourseEntity implements Serializable{
-    private IntegerProperty id;
-    private StringProperty name;
-    private DoubleProperty total_hours;
+    private int id;
+    private String name;
+    private Double total_hours;
     private boolean remote=false;
 
     public CourseEntity() {
     }
+
 
     public boolean isRemote() {
         return remote;
@@ -27,43 +26,39 @@ public class CourseEntity implements Serializable{
     }
 
     public int getId() {
-        return id.get();
-    }
-
-    public IntegerProperty idProperty() {
         return id;
     }
 
     public void setId(int id) {
-        this.id.set(id);
+        this.id = id;
     }
 
     public String getName() {
-        return name.get();
-    }
-
-    public StringProperty nameProperty() {
         return name;
     }
 
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
     public void setName(String name) {
-        this.name.set(name);
+        this.name = name;
     }
 
-    public double getTotal_hours() {
-        return total_hours.get();
-    }
-
-    public DoubleProperty total_hoursProperty() {
+    public Double getTotal_hours() {
         return total_hours;
     }
 
-    public void setTotal_hours(double total_hours) {
-        this.total_hours.set(total_hours);
+    public DoubleProperty total_hoursProperty(){
+        return new SimpleDoubleProperty(total_hours);
+    }
+
+    public void setTotal_hours(Double total_hours) {
+        this.total_hours = total_hours;
     }
 
     @Override
     public String toString(){
-        return "Course: id: "+id+"; course_name: "+name+"; total hours: "+total_hours;
+        return "Course: id: "+id+"; course_name: "+name+"; total hours: "+total_hours+"; "+isRemote();
     }
 }

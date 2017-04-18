@@ -7,7 +7,6 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import mainAcadProject.config.DBProcessor;
 import mainAcadProject.entity.CourseEntity;
-import sample.Course;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,34 +17,36 @@ import java.util.*;
 /**
  * Created by ) on 12.04.2017.
  */
-public class СourseDao {
+public class CourseDao {
 
     private CourseEntity course;
 
 
-    String query="select * from main_academy.course";
-    String update="update course set course_name=?, total_hours=?, remote=? where id=?";
-    String insert ="insert into course(course_name, total_hours, remote) values (?,?,?)";
+    static String query="select * from main_acad.course";
+    static String update="update course set course_name=?, total_hours=?, remote=? where id=?";
+    static String insert ="insert into course(course_name, total_hours, remote) values (?,?,?)";
 
-    public СourseDao(CourseEntity course) throws SQLException {
+    public CourseDao(CourseEntity course) throws SQLException {
         this.course = course;
     }
 
-    public ObservableList<CourseEntity> unload() throws SQLException {
-        ObservableList <CourseEntity> courses = FXCollections.observableArrayList();
+    public static List<CourseEntity> unload() throws SQLException {
+        List <CourseEntity> courses = new ArrayList <> ();
         ResultSet resSet=DBProcessor.getConnection().createStatement().executeQuery(query);
         while (resSet.next()){
             CourseEntity course = new CourseEntity();
             course.setId(resSet.getInt("id"));
             course.setName(resSet.getString("course_name"));
-            course.setTotal_hours(resSet.getDouble(""));
+            course.setTotal_hours(resSet.getDouble("total_hours"));
             course.setRemote(resSet.getBoolean("remote"));
-            courses.add(course);
+            if (!course.isRemote()) {
+                courses.add(course);
+            }
         }
         return courses;
     }
 
-    public void update(CourseEntity course){
+    public static void update(CourseEntity course){
         try
         {
             PreparedStatement preparedStat;
