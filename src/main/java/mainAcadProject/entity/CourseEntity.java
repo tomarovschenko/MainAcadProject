@@ -3,6 +3,7 @@ package mainAcadProject.entity;
 import javafx.beans.property.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by ) on 23.03.2017.
@@ -12,6 +13,7 @@ public class CourseEntity implements Serializable{
     private String name;
     private Double total_hours;
     private boolean remote=false;
+    private List <StudyGroupEntity> studyGroup;
 
     public CourseEntity() {
     }
@@ -55,6 +57,14 @@ public class CourseEntity implements Serializable{
 
     public void setTotal_hours(Double total_hours) {
         this.total_hours = total_hours;
+    }
+
+    public List<StudyGroupEntity> getStudyGroup() {
+        return studyGroup;
+    }
+
+    public void setStudyGroup(List<StudyGroupEntity> studyGroup) {
+        this.studyGroup = studyGroup;
     }
 
     @Override

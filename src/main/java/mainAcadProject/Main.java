@@ -21,11 +21,11 @@ public class Main {
 
 
 
-  /* Flyway flyway=new Flyway();
+   Flyway flyway=new Flyway();
         flyway.setDataSource(URL, USERNAME, PASSWORD);
         flyway.clean();
         flyway.migrate();
-        */
+
 
 
         GUIMain.runUI(args);

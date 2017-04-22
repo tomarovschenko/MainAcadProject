@@ -1,5 +1,8 @@
 package mainAcadProject.entity;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,15 +13,18 @@ public class ManagerEntity implements Serializable {
     private int id;
     private String name;
     private String access;
+    private boolean remote=false;
     private List<StudentEntity> students;
 
     public ManagerEntity() {
     }
 
-    public ManagerEntity(int id, String name, String access) {
-        this.id = id;
-        this.name = name;
-        this.access = access;
+    public boolean isRemote() {
+        return remote;
+    }
+
+    public void setRemote(boolean remote) {
+        this.remote = remote;
     }
 
     public int getId() {
@@ -33,12 +39,20 @@ public class ManagerEntity implements Serializable {
         return name;
     }
 
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public String getAccess() {
         return access;
+    }
+
+    public StringProperty accessProperty() {
+        return new SimpleStringProperty(access);
     }
 
     public void setAccess(String access) {
@@ -55,6 +69,6 @@ public class ManagerEntity implements Serializable {
 
     @Override
     public String toString(){
-        return "Manager: id: "+id+"; name: "+name+"; access: "+access;
+        return "Manager: id: "+id+"; name: "+name+"; access: "+access+"; "+remote;
     }
 }

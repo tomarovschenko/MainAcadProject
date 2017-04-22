@@ -18,7 +18,7 @@
                       <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="240.0" text="Кол-во учебных часов" fx:id="tbl_col_hours" />
                   </columns>
               </TableView>
-              <Button fx:id="btn_cancel" layoutX="504.0" layoutY="507.0" mnemonicParsing="false" text="Отмена" />
+              <Button fx:id="btn_close" layoutX="504.0" layoutY="507.0" mnemonicParsing="false" text="Закрыть" />
               <Button fx:id="btn_add" layoutX="289.0" layoutY="507.0" mnemonicParsing="false" onAction="#add" text="Добавить" />
               <Button fx:id="btn_save" layoutX="395.0" layoutY="507.0" mnemonicParsing="false" onAction="#saveСhanges" text="Сохранить" />
               <Button fx:id="btn_del" layoutX="601.0" layoutY="507.0" mnemonicParsing="false" onAction="#delete" text="Удалить" />
