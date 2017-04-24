@@ -97,5 +97,7 @@ public class ManagerController implements Initializable{
     }
     // TODO сделать что-то с кнопкой Закрыть
     @FXML
-    public void close(){}
+    public void close(){
+
+    }
 }

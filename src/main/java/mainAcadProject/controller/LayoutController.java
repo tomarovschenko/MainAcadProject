@@ -30,6 +30,7 @@ public class LayoutController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlCourses.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Учебные курсы");
         stage.show();
     }
 
@@ -43,6 +44,33 @@ public class LayoutController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlManagers.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Менеджеры");
+        stage.show();
+    }
+
+    @FXML
+    public void openNewInstructorController() throws IOException{
+       runNewInstructorController(NewInstructorController.getDialogStage());
+    }
+
+    private void runNewInstructorController(Stage stage) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlNewInstructor.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Новый инструктор");
+        stage.show();
+    }
+
+    @FXML
+    public void openInstructorsCatalog() throws IOException{
+        runInstructorsCatalogController(InstructorsCatalogController.getDialogStage());
+    }
+
+    private void runInstructorsCatalogController(Stage stage) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlInstructorsCatalog.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Инструкторы");
         stage.show();
     }
 

@@ -19,12 +19,10 @@ public class Main {
 
     public static void main(String args[]) {
 
-
-
-   Flyway flyway=new Flyway();
+        /*Flyway flyway=new Flyway();
         flyway.setDataSource(URL, USERNAME, PASSWORD);
         flyway.clean();
-        flyway.migrate();
+        flyway.migrate();*/
 
 
 

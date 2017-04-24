@@ -47,20 +47,16 @@ public class CourseDao {
     }
 
     public static void update(CourseEntity course){
-        try
-        {
+        try {
             PreparedStatement preparedStat;
             //если договор не новый
-            if ( course.getId() > 0 )
-            {
+            if ( course.getId() > 0 ) {
                 preparedStat = DBProcessor.getConnection().prepareStatement(update);
                 preparedStat.setInt( 4, course.getId() );
             }
-            else
-            {
+            else {
                 preparedStat = DBProcessor.getConnection().prepareStatement(insert);
             }
-
             preparedStat.setString( 1, course.getName() );
             preparedStat.setDouble( 2, course.getTotal_hours() );
             preparedStat.setBoolean( 3, course.isRemote() );

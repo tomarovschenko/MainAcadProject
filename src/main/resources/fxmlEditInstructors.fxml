@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane prefHeight="455.0000999999975" prefWidth="439.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainAcadProject.controller.EditInstructorController">
+  <children>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+      <children>
+        <Button fx:id="btn_save" mnemonicParsing="false" onAction="#saveChanges" text="Сохранить" textAlignment="CENTER">
+          <font>
+            <Font size="14.0" fx:id="x1" />
+          </font>
+        </Button>
+        <Button fx:id="btn_cansel" font="$x1" mnemonicParsing="false" onAction="#cancel" text="Отмена" textAlignment="CENTER" textOverrun="ELLIPSIS" />
+      </children>
+      <GridPane.margin>
+        <Insets />
+      </GridPane.margin>
+    </HBox>
+    <Label id="instructor" fx:id="lb_surname" font="$x1" text="Фамилия" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label id="instructor_name" fx:id="lb_name" font="$x1" text="Имя" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label id="instructor_patronymic" fx:id="lb_patronymic" font="$x1" text="Отчество" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <Label id="instructor_" fx:id="lb_phone" font="$x1" text="Контактный телефон" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Label id="instructor_mail" fx:id="lb_mail" font="$x1" text="e-mail" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <Label id="instructor_pass" fx:id="lb_passport" font="$x1" text="Паспорт" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <Label id="instructor_working" fx:id="lb_working" font="$x1" text="Актуальное место работы" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <TextField fx:id="tf_surname" editable="true" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <TextField fx:id="tf_name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="tf_patronymic" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="tf_phone" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <TextField fx:id="tf_mail" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <TextField fx:id="tf_passport" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <TextField fx:id="tf_working" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <Button id="btn_" fx:id="btn_contract" contentDisplay="CENTER" font="$x1" mnemonicParsing="false" onAction="#create_contract" text="Добавить трудовой договор" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.0" minWidth="10.0" prefWidth="192.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="216.0" />
+  </columnConstraints>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <rowConstraints>
+    <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>

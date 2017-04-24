@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
  */
 public class CourseController implements Initializable{
 
-        private Label label;
         private ObservableList <CourseEntity> courses;
         @FXML
         private TableView<CourseEntity> table_courses = new TableView<CourseEntity>();

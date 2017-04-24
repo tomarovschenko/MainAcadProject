@@ -10,24 +10,18 @@ public class LaborContractEntity implements Serializable{
     private String number;
     private LocalDate date_start;
     private LocalDate date_end;
+    private boolean remote=false;
     private InstructorEntity instructor;
 
     public LaborContractEntity(){
     }
 
-    public LaborContractEntity(int id, String number, LocalDate date_start, InstructorEntity instructor) {
-        this.id = id;
-        this.number = number;
-        this.date_start = date_start;
-        this.instructor = instructor;
+    public boolean isRemote() {
+        return remote;
     }
 
-    public LaborContractEntity(int id, String number, LocalDate date_start, LocalDate date_end, InstructorEntity instructor) {
-        this.id = id;
-        this.number = number;
-        this.date_start = date_start;
-        this.date_end = date_end;
-        this.instructor = instructor;
+    public void setRemote(boolean remote) {
+        this.remote = remote;
     }
 
     public int getId() {
@@ -72,8 +66,11 @@ public class LaborContractEntity implements Serializable{
 
     @Override
     public String toString(){
-        return "LaborContract: id: "+id+"; number: "+number+"; date_start: "+date_start+"; date_end: "+date_end+
-                "; instructor: "+instructor.getSurname()+" "+instructor.getName()+" "+instructor.getPatronymic();
+        return "LaborContract: id: "+id+"; number: "+number+"; date_start: "+date_start+"; date_end: "+date_end+ "; "+remote;
     }
+
+
 }
 
+//"LaborContract: id: "+id+"; number: "+number+"; date_start: "+date_start+"; date_end: "+date_end+
+                //"; instructor: "+instructor.getSurname()+" "+instructor.getName()+" "+instructor.getPatronymic()+"; "+remote;

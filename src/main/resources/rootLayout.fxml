@@ -18,7 +18,7 @@
         <Menu mnemonicParsing="false" text="Действия">
           <items>
             <MenuItem mnemonicParsing="false" text="Внести нового студента" />
-            <MenuItem mnemonicParsing="false" text="Внести нового инструктора" />
+            <MenuItem mnemonicParsing="false" onAction="#openNewInstructorController" text="Внести нового инструктора" />
             <MenuItem mnemonicParsing="false" text="Создать учебную группу" />
             <MenuItem mnemonicParsing="false" text="Внести оплату" />
           </items>
@@ -28,7 +28,7 @@
             <Menu mnemonicParsing="false" text="Контрагенты">
               <items>
                 <MenuItem mnemonicParsing="false" text="Студенты" />
-                <MenuItem mnemonicParsing="false" text="Инструкторы" />
+                <MenuItem mnemonicParsing="false" onAction="#openInstructorsCatalog" text="Инструкторы" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Договора">

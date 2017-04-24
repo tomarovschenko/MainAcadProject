@@ -1,6 +1,10 @@
 package mainAcadProject.entity;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,22 +19,35 @@ public class InstructorEntity implements Serializable {
     private String passport;
     private String  email;
     private String  working;
-    List <LaborContractEntity> contracts;
+    private boolean remote=false;
+    List <LaborContractEntity> contracts=new ArrayList<>();
     List <StudyGroupEntity> groups;
 
     public InstructorEntity() {
     }
 
-    public int getInstructor_id() {
+    public boolean isRemote() {
+        return remote;
+    }
+
+    public void setRemote(boolean remote) {
+        this.remote = remote;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setInstructor_id(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getSurname() {
         return surname;
+    }
+
+    public StringProperty surnameProperty() {
+        return new SimpleStringProperty(surname);
     }
 
     public void setSurname(String surname) {
@@ -41,12 +58,20 @@ public class InstructorEntity implements Serializable {
         return name;
     }
 
+    public StringProperty nameProperty(){
+        return new SimpleStringProperty(name);
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public String getPatronymic() {
         return patronymic;
+    }
+
+    public StringProperty patronymicProperty(){
+        return new SimpleStringProperty(patronymic);
     }
 
     public void setPatronymic(String patronymic) {
@@ -57,6 +82,10 @@ public class InstructorEntity implements Serializable {
         return phone;
     }
 
+    public StringProperty phoneProperty(){
+        return new SimpleStringProperty(phone);
+    }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -65,12 +94,20 @@ public class InstructorEntity implements Serializable {
         return email;
     }
 
+    public StringProperty emailProperty(){
+        return new SimpleStringProperty(email);
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
     public String getWorking() {
         return working;
+    }
+
+    public StringProperty workingProperty(){
+        return new SimpleStringProperty(working);
     }
 
     public void setWorking(String working) {
@@ -85,6 +122,11 @@ public class InstructorEntity implements Serializable {
         this.contracts = contracts;
     }
 
+    public void addContracts(LaborContractEntity contract) {
+        contract.setInstructor(this);
+        this.contracts.add(contract);
+    }
+
     public List<StudyGroupEntity> getGroups() {
         return groups;
     }
@@ -95,6 +137,10 @@ public class InstructorEntity implements Serializable {
 
     public String getPassport() {
         return passport;
+    }
+
+    public StringProperty passportProperty(){
+        return new SimpleStringProperty(passport);
     }
 
     public void setPassport(String passport) {
