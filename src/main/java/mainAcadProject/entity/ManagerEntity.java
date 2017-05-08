@@ -69,6 +69,6 @@ public class ManagerEntity implements Serializable {
 
     @Override
     public String toString(){
-        return "Manager: id: "+id+"; name: "+name+"; access: "+access+"; "+remote;
+        return name;
     }
 }

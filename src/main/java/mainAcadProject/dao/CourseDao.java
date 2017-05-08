@@ -46,21 +46,30 @@ public class CourseDao {
         return courses;
     }
 
-    public static void update(CourseEntity course){
+    public static void insert(CourseEntity course){
         try {
             PreparedStatement preparedStat;
-            //если договор не новый
-            if ( course.getId() > 0 ) {
-                preparedStat = DBProcessor.getConnection().prepareStatement(update);
-                preparedStat.setInt( 4, course.getId() );
-            }
-            else {
-                preparedStat = DBProcessor.getConnection().prepareStatement(insert);
-            }
+            preparedStat = DBProcessor.getConnection().prepareStatement(insert);
             preparedStat.setString( 1, course.getName() );
             preparedStat.setDouble( 2, course.getTotal_hours() );
             preparedStat.setBoolean( 3, course.isRemote() );
+            preparedStat.executeUpdate();
+            preparedStat.close();
+        }
+        catch( SQLException e )
+        {
+            e.printStackTrace();
+        }
+    }
 
+    public static void update(CourseEntity course){
+        try {
+            PreparedStatement preparedStat;
+            preparedStat = DBProcessor.getConnection().prepareStatement(update);
+            preparedStat.setInt( 4, course.getId() );
+            preparedStat.setString( 1, course.getName() );
+            preparedStat.setDouble( 2, course.getTotal_hours() );
+            preparedStat.setBoolean( 3, course.isRemote() );
             preparedStat.executeUpdate();
             preparedStat.close();
         }

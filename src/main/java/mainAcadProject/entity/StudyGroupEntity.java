@@ -17,7 +17,7 @@ public class StudyGroupEntity implements Serializable {
     private LocalDate fact_startDate;
     private LocalDate fact_endDate;
     private double total_hours;
-    private double spent_hourse;
+    private double spent_hours;
     private List<InstructorEntity> instructor;
     private List<RegistersEntity> registers;
 
@@ -96,12 +96,12 @@ public class StudyGroupEntity implements Serializable {
         this.total_hours = total_hours;
     }
 
-    public double getSpent_hourse() {
-        return spent_hourse;
+    public double getSpent_hours() {
+        return spent_hours;
     }
 
-    public void setSpent_hourse(double spent_hourse) {
-        this.spent_hourse = spent_hourse;
+    public void setSpent_hourse(double spent_hours) {
+        this.spent_hours = spent_hours;
     }
 
     public List<RegistersEntity> getRegisters() {
@@ -115,7 +115,7 @@ public class StudyGroupEntity implements Serializable {
     @Override
     public String toString(){
         return "Study group: id: "+id+"; name: "+name+"; course: "+course.getName()+"; total hourse: "+total_hours+
-                "; spent hours: "+spent_hourse+"; plan start: "+plan_startDate+"; plan end: "+plan_endDate+
+                "; spent hours: "+spent_hours+"; plan start: "+plan_startDate+"; plan end: "+plan_endDate+
                 "; fact start: "+fact_startDate+"; fact end: "+fact_endDate;
     }
 }

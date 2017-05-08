@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane prefHeight="268.0" prefWidth="465.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainAcadProject.controller.NewContractController">
+  <children>
+    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <children>
+        <Button fx:id="btn_create" mnemonicParsing="false" onAction="#createContract" text="Внести">
+          <font>
+            <Font size="14.0" fx:id="x1" />
+          </font>
+        </Button>
+        <Button fx:id="btn_cansel" font="$x1" mnemonicParsing="false" onAction="#cancel" text="Отмена" />
+      </children>
+    </HBox>
+    <DatePicker fx:id="dp_startDate" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <DatePicker fx:id="dp_endDate" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="tf_number" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <TextField fx:id="tf_amount" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label id="lb_" fx:id="lb_number" font="$x1" text="Номер договора" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label id="lb_date" fx:id="lb_startDate" font="$x1" text="Дата договора" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label id="lb_endDate" fx:id="lb_amount" font="$x1" text="Сумма по договору" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Label id="lb_date" fx:id="lb_endDate" font="$x1" text="Срок действия до" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="143.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="282.0" />
+  </columnConstraints>
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <rowConstraints>
+    <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>

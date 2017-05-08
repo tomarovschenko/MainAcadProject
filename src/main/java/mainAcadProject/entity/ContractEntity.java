@@ -13,13 +13,14 @@ public class ContractEntity implements Serializable {
     private LocalDate startDate;
     private LocalDate endDate;
     private double amount;
-    private StudentEntity student;
+    private boolean remote = false;
+    private String student_id;
     private List <PaymentEntity> payments;
 
     public ContractEntity() {
     }
 
-   public int getId() {
+    public int getId() {
         return id;
     }
 
@@ -27,12 +28,12 @@ public class ContractEntity implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
+    public String getNumb() {
         return numb;
     }
 
-    public void setName(String name) {
-        this.numb = name;
+    public void setNumb(String numb) {
+        this.numb = numb;
     }
 
     public LocalDate getStartDate() {
@@ -59,25 +60,25 @@ public class ContractEntity implements Serializable {
         this.amount = amount;
     }
 
-    public StudentEntity getStudent() {
-        return student;
+    public boolean isRemote() {
+        return remote;
     }
 
-    public void setStudent(StudentEntity student) {
-        this.student = student;
+    public void setRemote(boolean remote) {
+        this.remote = remote;
     }
 
-    public List<PaymentEntity> getPayments() {
-        return payments;
+    public String getStudent_id() {
+        return student_id;
     }
 
-    public void setPayments(List<PaymentEntity> payments) {
-        this.payments = payments;
+    public void setStudent_id(String student_id) {
+        this.student_id = student_id;
     }
 
     @Override
     public String toString(){
         return "Contract: id: "+id+"; №: "+numb+"; start: "+startDate+"; end: "+endDate+"; amount: "+amount+
-                "; student: "+student.getSurname()+" "+student.getName()+" "+student.getPatronymic();
+                "; student: "+student_id;
     }
 }

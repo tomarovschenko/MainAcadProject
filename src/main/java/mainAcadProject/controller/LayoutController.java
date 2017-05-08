@@ -22,12 +22,11 @@ public class LayoutController implements Initializable {
 
     @FXML
     public void openCoursesCatalog() throws IOException {
-        Stage stage = new Stage();
-        runCourseController(stage);
+        runCourseController(CatalogCourseController.getDialogStage());
     }
 
     private void runCourseController(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlCourses.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlCatalogCourses.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Учебные курсы");
@@ -36,12 +35,11 @@ public class LayoutController implements Initializable {
 
     @FXML
     public void openManagersCatalog() throws IOException {
-        Stage stage = new Stage();
-        runManagerController(stage);
+       runManagerController(CatalogManagerController.getDialogStage());
     }
 
     private void runManagerController(Stage stage) throws  IOException{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlManagers.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlCatalogManagers.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Менеджеры");
@@ -63,15 +61,56 @@ public class LayoutController implements Initializable {
 
     @FXML
     public void openInstructorsCatalog() throws IOException{
-        runInstructorsCatalogController(InstructorsCatalogController.getDialogStage());
+        runInstructorsCatalogController(CatalogInstructorsController.getDialogStage());
     }
 
     private void runInstructorsCatalogController(Stage stage) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlInstructorsCatalog.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlCatalogInstructors.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Инструкторы");
         stage.show();
     }
+
+    public void openLaborContractsCatalog() throws IOException {
+        runCatalogLaborContractsController(CatalogLaborContractsController.getDialogStage());
+
+    }
+
+    private void runCatalogLaborContractsController(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlCatalogLaborContracts.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Трудовые договора");
+        stage.show();
+    }
+
+    @FXML
+    public void openNewStudentController() throws IOException{
+        runNewStudentController(NewStudentController.getDialogStage());
+    }
+
+    private void runNewStudentController(Stage stage) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlNewStudent.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Новый студент");
+        stage.show();
+    }
+
+    @FXML
+    public void openStudentsCatalog() throws IOException{
+        runStudentsCatalogController(CatalogStudentController.getDialogStage());
+    }
+
+    private void runStudentsCatalogController(Stage stage) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlCatalogStudents.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Студенты");
+        stage.show();
+    }
+
+    //TODO сделать корректный Файл -> закрыть
 
 }

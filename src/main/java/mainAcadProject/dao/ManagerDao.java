@@ -40,24 +40,15 @@ public class ManagerDao {
         return managers;
     }
 
-    public static void update(ManagerEntity manager){
+    public static void insert (ManagerEntity manager){
         try
         {
             PreparedStatement preparedStat;
-            if (manager.getId() > 0 )
-            {
-                preparedStat = DBProcessor.getConnection().prepareStatement(update);
-                preparedStat.setInt( 4, manager.getId() );
-            }
-            else
-            {
-                preparedStat = DBProcessor.getConnection().prepareStatement(insert);
-            }
 
+            preparedStat = DBProcessor.getConnection().prepareStatement(insert);
             preparedStat.setString( 1, manager.getName() );
             preparedStat.setString( 2, manager.getAccess() );
             preparedStat.setBoolean( 3, manager.isRemote() );
-
             preparedStat.executeUpdate();
             preparedStat.close();
         }
@@ -65,5 +56,36 @@ public class ManagerDao {
         {
             e.printStackTrace();
         }
+    }
+
+    public static void update(ManagerEntity manager){
+        try
+        {
+            PreparedStatement preparedStat;
+            preparedStat = DBProcessor.getConnection().prepareStatement(update);
+            preparedStat.setInt( 4, manager.getId() );
+            preparedStat.setString( 1, manager.getName() );
+            preparedStat.setString( 2, manager.getAccess() );
+            preparedStat.setBoolean( 3, manager.isRemote() );
+            preparedStat.executeUpdate();
+            preparedStat.close();
+        }
+        catch( SQLException e )
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static String managerName(int manager_id){
+        String name = "";
+        try {
+            ResultSet resSet= DBProcessor.getConnection().createStatement().executeQuery(query+" where id= '"+manager_id+"'");
+            while (resSet.next()) {
+                name = resSet.getString("manager_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return name;
     }
 }

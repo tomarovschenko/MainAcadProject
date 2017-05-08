@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="291.0000999999975" prefWidth="1350.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainAcadProject.controller.InstructorsCatalogController">
+<GridPane prefHeight="291.0000999999975" prefWidth="1350.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainAcadProject.controller.CatalogInstructorsController">
   <children>
     <TableView fx:id="instructors_catalog" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <columns>
@@ -25,12 +25,11 @@
       <children>
         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="547.0" spacing="20.0">
           <children>
-            <Button id="btn_" fx:id="btn_edit" mnemonicParsing="false" onAction="#editInstructor" text="Редактировать">
+            <Button fx:id="btn_delete" mnemonicParsing="false" onAction="#delete" text="Удалить">
               <font>
                 <Font size="14.0" fx:id="x1" />
               </font>
             </Button>
-            <Button fx:id="btn_delete" font="$x1" mnemonicParsing="false" onAction="#delete" text="Удалить" />
           </children>
         </HBox>
         <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="783.0">

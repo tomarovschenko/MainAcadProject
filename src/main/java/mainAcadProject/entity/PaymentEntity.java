@@ -86,6 +86,6 @@ public class PaymentEntity implements Serializable {
     @Override
     public String toString(){
         return "Payment: id: "+id+";  amount_plan: "+amount_plan+"; date_plan: "+date_plan+"; invoice: "+invoice_num+
-                "; date: "+invoice_date+"; amount_fact: "+amount_fact+"; date_fact: "+date_fact+"; contract: "+contract.getName();
+                "; date: "+invoice_date+"; amount_fact: "+amount_fact+"; date_fact: "+date_fact+"; contract: ";
     }
 }

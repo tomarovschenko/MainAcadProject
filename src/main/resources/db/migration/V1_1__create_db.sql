@@ -18,7 +18,7 @@ CREATE TABLE `course`(
   UNIQUE KEY `course_name_UNIQUE` (`course_name`));
 
 CREATE TABLE `instructor` (
-  `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned zerofill NOT NULL,
   `surname` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
   `patronymic` varchar(45) NOT NULL,

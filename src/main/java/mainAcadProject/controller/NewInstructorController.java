@@ -1,5 +1,7 @@
 package mainAcadProject.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,9 +14,12 @@ import mainAcadProject.dao.InstructorDao;
 import mainAcadProject.dao.LaborContractDao;
 import mainAcadProject.entity.InstructorEntity;
 import mainAcadProject.entity.LaborContractEntity;
+import org.apache.commons.lang.RandomStringUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -41,6 +46,15 @@ public class NewInstructorController implements Initializable {
 
     private InstructorEntity instructor = new InstructorEntity();
 
+
+    public NewInstructorController() {
+        try {
+            this.instructor.setId(createId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Stage getDialogStage() {
         return dialogStage;
     }
@@ -55,7 +69,6 @@ public class NewInstructorController implements Initializable {
     @FXML
     public void createInstructor() throws IOException{
         if (isInputValid()) {
-            instructor.setId(0);
             instructor.setSurname(tf_surname.getText());
             instructor.setName(tf_name.getText());
             instructor.setPatronymic(tf_patronymic.getText());
@@ -63,14 +76,11 @@ public class NewInstructorController implements Initializable {
             instructor.setPassport(tf_passport.getText());
             instructor.setEmail(tf_mail.getText());
             instructor.setWorking(tf_working.getText());
-
-            InstructorDao.update(instructor);
-
-            System.out.println(instructor.getContracts().get(0).toString());
-          // System.out.println(instructor.getContracts().get(1).toString());
-           // LaborContractDao.update(instructor.getContracts().get(0));
-           // System.out.println(instructor.toString());
-
+            InstructorDao.insert(instructor);
+            List <LaborContractEntity> contractsList = instructor.getContracts();
+            for (LaborContractEntity contr :contractsList){
+                LaborContractDao.insert(contr);
+            }
             dialogStage.close();
         }
     }
@@ -80,7 +90,7 @@ public class NewInstructorController implements Initializable {
         dialogStage.close();
     }
 
-//TODO дописать проверку на корректность вводимых данных
+    //TODO удалить те поля, коорые могут быть не обязательными, дописать проверку на корректность вводимых данных
     private boolean isInputValid(){
         String errorMess ="";
         if ((tf_surname.getText()==null)||(tf_surname.getText().isEmpty())){
@@ -112,16 +122,16 @@ public class NewInstructorController implements Initializable {
     @FXML
     public void create_contract() throws IOException{
         LaborContractEntity contractEntity = new LaborContractEntity();
+        contractEntity.setInstructor_id(instructor.getId());
         runNewLaborContractController(contractEntity);
-        instructor.addContracts(contractEntity);
-
+        if (contractEntity==null) {
+            instructor.addContracts(contractEntity);
+        }
     }
 
     public void runNewLaborContractController(LaborContractEntity contract) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(NewLaborContractController.class.getClassLoader().getResource("fxmlNewLaborContract.fxml"));
-
-       // Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxmlNewLaborContract.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -132,38 +142,20 @@ public class NewInstructorController implements Initializable {
         controller.setContract(contract);
         stage.showAndWait();
     }
-    /*
-    public boolean showPersonEditDialog(Person person) {
-    try {
-        // Загружаем fxml-файл и создаём новую сцену
-        // для всплывающего диалогового окна.
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
-        AnchorPane page = (AnchorPane) loader.load();
 
-        // Создаём диалоговое окно Stage.
-        Stage dialogStage = new Stage();
-        dialogStage.setTitle("Edit Person");
-        dialogStage.initModality(Modality.WINDOW_MODAL);
-        dialogStage.initOwner(primaryStage);
-        Scene scene = new Scene(page);
-        dialogStage.setScene(scene);
-
-        // Передаём адресата в контроллер.
-        PersonEditDialogController controller = loader.getController();
-        controller.setDialogStage(dialogStage);
-        controller.setPerson(person);
-
-        // Отображаем диалоговое окно и ждём, пока пользователь его не закроет
-        dialogStage.showAndWait();
-
-        return controller.isOkClicked();
-    } catch (IOException e) {
-        e.printStackTrace();
-        return false;
+    private String createId() throws SQLException{
+        String id_num = RandomStringUtils.randomAlphanumeric(45);
+        ObservableList <InstructorEntity> base = FXCollections.observableArrayList(InstructorDao.unload());
+        for (InstructorEntity instructor : base){
+            if (id_num.equals(instructor.getId())){
+                id_num=createId();
+                return id_num;
+            }
+        }
+        return id_num;
     }
-}
-     */
+
+
 
 
 

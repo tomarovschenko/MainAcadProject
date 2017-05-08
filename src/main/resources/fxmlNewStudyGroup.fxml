@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane prefHeight="491.0" prefWidth="425.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainAcadProject.controller.NewStudyGroupController">
+  <children>
+    <Label fx:id="lb_name" text="Название" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label fx:id="lb_course" font="$x1" text="Учебный курс" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label id="lb_" fx:id="lb_instructor" font="$x1" text="Инструктор" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <Label fx:id="lb_datePlan" text="Плановые даты:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+      <font>
+        <Font name="System Bold" size="14.0" />
+      </font>
+    </Label>
+    <Label id="lb_" fx:id="lb_plan_startDate" font="$x1" text="Начало занятий" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <Label id="lb_" fx:id="lb_plan_endDate" font="$x1" text="Окончание занятий" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <Label id="lb_" fx:id="lb_total_hours" font="$x1" text="Количество учебных часов" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <TextField fx:id="tf_name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <TextField id="tf_course" fx:id="tf_total_hours" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <ComboBox fx:id="cb_course" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <ComboBox fx:id="cb_instructor" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <children>
+        <Button fx:id="btn_create" font="$x1" mnemonicParsing="false" onAction="#createStudyGroup" text="Внести" />
+        <Button fx:id="btn_close" font="$x1" mnemonicParsing="false" onAction="#close" text="Отмена" />
+      </children>
+    </HBox>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="208.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="236.0" />
+  </columnConstraints>
+  <padding>
+    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+  </padding>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>

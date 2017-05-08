@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import mainAcadProject.dao.CourseDao;
 import mainAcadProject.dao.ManagerDao;
 import mainAcadProject.entity.CourseEntity;
@@ -21,7 +22,7 @@ import java.util.ResourceBundle;
 /**
  * Created by ) on 21.04.2017.
  */
-public class ManagerController implements Initializable{
+public class CatalogManagerController implements Initializable{
 
     private ObservableList <ManagerEntity> managers;
     @FXML
@@ -31,12 +32,10 @@ public class ManagerController implements Initializable{
     @FXML
     TableColumn <ManagerEntity, String> managers_access = new TableColumn<>();
 
-    public ObservableList<ManagerEntity> getManagers() {
-        return managers;
-    }
+    private static Stage dialogStage = new Stage();
 
-    public void setManagers(ObservableList<ManagerEntity> managers) {
-        this.managers = managers;
+    public static Stage getDialogStage() {
+        return dialogStage;
     }
 
     @Override
@@ -80,8 +79,14 @@ public class ManagerController implements Initializable{
     @FXML
     public void save() throws SQLException{
         managers=managers_catalog.getItems();
-        for (ManagerEntity manag: managers){
-            ManagerDao.update(manag);
+
+        for (ManagerEntity managerEntity: managers){
+            if (managerEntity.getId()>0) {
+                ManagerDao.update(managerEntity);
+            }
+            else {
+                ManagerDao.insert(managerEntity);
+            }
         }
         managers= FXCollections.observableArrayList(ManagerDao.unload());
         managers_catalog.setItems(managers);
@@ -95,9 +100,9 @@ public class ManagerController implements Initializable{
         managers=FXCollections.observableArrayList(ManagerDao.unload());
         managers_catalog.setItems(managers);
     }
-    // TODO сделать что-то с кнопкой Закрыть
+
     @FXML
     public void close(){
-
+        dialogStage.close();
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * Created by ) on 23.03.2017.
  */
 public class InstructorEntity implements Serializable {
-    private int id;
+    private String id;
     private String  surname;
     private String  name;
     private String  patronymic;
@@ -34,11 +34,11 @@ public class InstructorEntity implements Serializable {
         this.remote = remote;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -123,7 +123,7 @@ public class InstructorEntity implements Serializable {
     }
 
     public void addContracts(LaborContractEntity contract) {
-        contract.setInstructor(this);
+        contract.setInstructor_id(this.getId());
         this.contracts.add(contract);
     }
 
